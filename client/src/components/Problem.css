@@ -1,0 +1,122 @@
+.problem-section {
+  background-color: var(--bg-white);
+}
+
+.problem-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 24px;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.problem-card {
+  flex: 1;
+  background: var(--bg-beige);
+  border-radius: var(--border-radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.problem-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.professional-card {
+  border-top: 4px solid var(--secondary-brown);
+}
+
+.rural-card {
+  border-top: 4px solid var(--primary-green);
+}
+
+.problem-icon {
+  font-size: 3rem;
+  margin-bottom: 24px;
+}
+
+.problem-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.problem-desc {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.problem-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.problem-list li {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.problem-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 60px;
+}
+
+.divider-text {
+  background: var(--text-dark);
+  color: var(--bg-white);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+}
+
+.solution-banner {
+  background: var(--primary-green);
+  color: var(--bg-white);
+  border-radius: var(--border-radius-md);
+  padding: 40px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.solution-banner h3 {
+  color: var(--bg-white);
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.solution-banner p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .problem-grid {
+    flex-direction: column;
+  }
+  .problem-divider {
+    padding: 20px 0;
+  }
+  .divider-text {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+}
