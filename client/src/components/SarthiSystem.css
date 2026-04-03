@@ -1,73 +1,121 @@
 .system-section {
-  background-color: var(--bg-beige);
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 32px;
-}
-
-.feature-card {
-  background: var(--bg-white);
-  padding: 40px 32px;
-  border-radius: var(--border-radius-lg);
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border: 1px solid rgba(0,0,0,0.03);
+  background: var(--clr-bg-alt);
   position: relative;
   overflow: hidden;
 }
 
-.feature-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-green), #388E3C);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
+/* ===== Features Grid ===== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* ===== Feature Card ===== */
+.feature-card {
+  background: var(--clr-bg-card);
+  border: var(--border-thick);
+  border-radius: var(--radius-xl);
+  padding: 40px 28px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-bounce);
 }
 
 .feature-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px) rotate(-1deg);
 }
 
-.feature-card:hover::before {
-  transform: scaleX(1);
+/* Per-card color shadows */
+.feature-green { box-shadow: 5px 5px 0px var(--clr-green-dark); }
+.feature-green:hover { box-shadow: 7px 7px 0px var(--clr-green-dark); }
+
+.feature-orange { box-shadow: 5px 5px 0px var(--clr-orange); }
+.feature-orange:hover { box-shadow: 7px 7px 0px var(--clr-orange); }
+
+.feature-blue { box-shadow: 5px 5px 0px var(--clr-blue); }
+.feature-blue:hover { box-shadow: 7px 7px 0px var(--clr-blue); }
+
+.feature-purple { box-shadow: 5px 5px 0px var(--clr-purple); }
+.feature-purple:hover { box-shadow: 7px 7px 0px var(--clr-purple); }
+
+/* Background emoji watermark */
+.feature-bg-emoji {
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+  font-size: 5rem;
+  opacity: 0.06;
+  pointer-events: none;
+  transform: rotate(-15deg);
 }
 
-.feature-icon {
-  font-size: 3.5rem;
-  margin-bottom: 24px;
-  color: var(--primary-green);
-  transition: transform 0.3s ease;
+/* Number badge */
+.feature-number-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--clr-text-muted);
+  background: var(--clr-bg);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--clr-outline);
+  opacity: 0.5;
 }
 
-.feature-card:hover .feature-icon {
-  transform: scale(1.1);
+/* Icon bubble */
+.feature-icon-bubble {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: var(--border-thick);
+  transition: all var(--transition-bounce);
 }
 
+.feature-card:hover .feature-icon-bubble {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.feature-icon-bubble span {
+  font-size: 2rem;
+}
+
+/* Per-card icon bg colors */
+.feature-green .feature-icon-bubble { background: var(--clr-bg-green); }
+.feature-orange .feature-icon-bubble { background: var(--clr-bg-orange); }
+.feature-blue .feature-icon-bubble { background: var(--clr-bg-blue); }
+.feature-purple .feature-icon-bubble { background: var(--clr-bg-purple); }
+
+/* Title */
 .feature-title {
-  font-size: 1.35rem;
-  color: var(--text-dark);
-  margin-bottom: 16px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.3rem;
+  color: var(--clr-text);
+  margin-bottom: 12px;
 }
 
+/* Description */
 .feature-desc {
-  color: var(--text-muted);
-  font-size: 1.05rem;
-  line-height: 1.6;
+  color: var(--clr-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .features-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 18px;
+  }
+
+  .feature-card {
+    padding: 32px 24px 28px;
   }
 }

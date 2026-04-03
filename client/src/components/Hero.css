@@ -4,83 +4,221 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/hero_farm_background.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding-top: 80px;
+  background: linear-gradient(180deg, #D4F5D0 0%, var(--clr-bg) 60%, var(--clr-bg) 100%);
+  padding-top: 90px;
+  overflow: hidden;
 }
 
-.hero-overlay {
+/* ===== Fun Floating Decorations ===== */
+.hero-decos {
   position: absolute;
-  top: 0;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.deco {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: float 5s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1));
+}
+
+.deco-1 { top: 12%; left: 8%; animation-delay: 0s; font-size: 3rem; }
+.deco-2 { top: 20%; right: 10%; animation-delay: 1s; font-size: 3.5rem; }
+.deco-3 { top: 8%; left: 30%; animation-delay: 2s; font-size: 4rem; opacity: 0.7; }
+.deco-4 { top: 5%; right: 25%; animation-delay: 3.5s; font-size: 3.5rem; opacity: 0.5; }
+.deco-5 { bottom: 25%; left: 5%; animation-delay: 1.5s; font-size: 2.5rem; }
+.deco-6 { bottom: 30%; right: 8%; animation-delay: 0.5s; font-size: 2.5rem; }
+.deco-7 { top: 15%; left: 55%; animation-delay: 4s; font-size: 2rem; animation-name: spin-slow; animation-duration: 8s; }
+.deco-8 { top: 3%; right: 5%; animation: none; font-size: 3rem; opacity: 0.6; }
+
+/* Wavy hills at bottom */
+.hero-hills {
+  position: absolute;
+  bottom: -2px;
   left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(27, 94, 32, 0.8), /* Deep Green semi-transparent */
-    rgba(26, 26, 26, 0.6)  /* Dark overlay for contrast */
-  );
-  z-index: 1;
+  height: 80px;
+  background: var(--clr-bg);
+  border-radius: 100% 100% 0 0 / 100% 100% 0 0;
 }
 
+/* ===== Content ===== */
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  color: var(--bg-white);
-  max-width: 800px;
-  animation: fadeIn 1s ease-out;
+  max-width: 780px;
 }
 
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  background: var(--clr-bg-card);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-cartoon-sm);
+  color: var(--clr-text);
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  animation: fadeInUp 0.8s var(--bounce) 0.1s both;
+}
+
+.badge-emoji {
+  font-size: 1.2rem;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+/* Title */
 .hero-title {
-  font-size: 4rem;
-  line-height: 1.1;
+  font-size: clamp(2.5rem, 6.5vw, 4.2rem);
+  line-height: 1.15;
   margin-bottom: 24px;
-  color: var(--bg-white);
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: var(--clr-text);
+  animation: fadeInUp 0.8s var(--bounce) 0.2s both;
 }
 
+.hero-title-green {
+  color: var(--clr-green-dark);
+  position: relative;
+}
+
+.hero-title-green::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--clr-yellow);
+  border-radius: 4px;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Subtitle */
 .hero-subtitle {
-  font-size: 1.25rem;
-  font-weight: 300;
+  font-size: 1.15rem;
+  font-weight: 600;
   margin-bottom: 40px;
-  opacity: 0.9;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--clr-text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  animation: fadeInUp 0.8s var(--bounce) 0.35s both;
 }
 
+/* Buttons */
 .hero-buttons {
   display: flex;
   justify-content: center;
   gap: 16px;
+  margin-bottom: 56px;
+  animation: fadeInUp 0.8s var(--bounce) 0.45s both;
 }
 
 .hero-btn {
-  padding: 14px 32px;
-  font-size: 1.1rem;
+  padding: 16px 32px;
+  font-size: 1.05rem;
 }
 
-.hero-btn-outline {
-  color: var(--bg-white);
-  border-color: var(--bg-white);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
+/* ===== Stats ===== */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s var(--bounce) 0.6s both;
 }
 
-.hero-btn-outline:hover {
-  background: var(--bg-white);
-  color: var(--primary-green);
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 28px;
+  border-radius: var(--radius-lg);
+  border: var(--border-thick);
+  background: var(--clr-bg-card);
+  box-shadow: var(--shadow-cartoon);
+  transition: all var(--transition-bounce);
+  cursor: default;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.stat-card:hover {
+  transform: translateY(-5px) rotate(-2deg);
+  box-shadow: var(--shadow-cartoon-hover);
 }
 
+.stat-green { border-color: var(--clr-green-dark); }
+.stat-yellow { border-color: var(--clr-yellow-dark); }
+.stat-blue { border-color: var(--clr-blue); }
+
+.stat-emoji {
+  font-size: 1.5rem;
+}
+
+.stat-number {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--clr-text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .hero { min-height: 80vh; }
-  .hero-title { font-size: 2.5rem; }
-  .hero-subtitle { font-size: 1rem; }
-  .hero-buttons { flex-direction: column; }
+  .hero {
+    min-height: 100dvh;
+    padding-top: 100px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .hero-stats {
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 14px 20px;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+
+  .deco { font-size: 2rem; }
+  .deco-2 { font-size: 2.5rem; }
+  .deco-3, .deco-4 { display: none; }
 }

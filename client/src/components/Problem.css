@@ -1,55 +1,84 @@
 .problem-section {
-  background-color: var(--bg-white);
+  background: var(--clr-bg);
+  position: relative;
+  overflow: hidden;
 }
 
+/* ===== Problem Grid ===== */
 .problem-grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: stretch;
   gap: 24px;
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
+/* ===== Card ===== */
 .problem-card {
   flex: 1;
-  background: var(--bg-beige);
-  border-radius: var(--border-radius-lg);
-  padding: 40px;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  border: 1px solid rgba(0,0,0,0.05);
+  max-width: 440px;
+  border-radius: var(--radius-xl);
+  padding: 40px 32px;
+  border: var(--border-thick);
+  background: var(--clr-bg-card);
+  position: relative;
+  transition: all var(--transition-bounce);
+  overflow: hidden;
 }
 
 .problem-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-6px) rotate(-1deg);
 }
 
-.professional-card {
-  border-top: 4px solid var(--secondary-brown);
+.card-orange {
+  box-shadow: 5px 5px 0px var(--clr-orange);
 }
 
-.rural-card {
-  border-top: 4px solid var(--primary-green);
+.card-orange:hover {
+  box-shadow: 7px 7px 0px var(--clr-orange);
 }
 
-.problem-icon {
-  font-size: 3rem;
-  margin-bottom: 24px;
+.card-green {
+  box-shadow: 5px 5px 0px var(--clr-green-dark);
+}
+
+.card-green:hover {
+  box-shadow: 7px 7px 0px var(--clr-green-dark);
+}
+
+/* Corner deco */
+.card-corner-deco {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 2rem;
+  opacity: 0.15;
+  transform: rotate(15deg);
+}
+
+/* Big emoji */
+.problem-emoji-big {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  animation: bounce 3s ease-in-out infinite;
 }
 
 .problem-card h3 {
+  font-family: 'Fredoka', sans-serif;
   font-size: 1.5rem;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  color: var(--clr-text);
 }
 
 .problem-desc {
-  color: var(--text-muted);
+  color: var(--clr-text-secondary);
   margin-bottom: 24px;
-  line-height: 1.7;
+  line-height: 1.65;
+  font-size: 0.95rem;
 }
 
+/* Problem list */
 .problem-list {
   display: flex;
   flex-direction: column;
@@ -59,64 +88,114 @@
 .problem-list li {
   display: flex;
   align-items: center;
-  font-weight: 500;
-  color: var(--text-dark);
+  gap: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--clr-text);
 }
 
+.list-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.badge-red {
+  background: var(--clr-bg-pink);
+  border: 2px solid var(--clr-pink);
+}
+
+/* ===== VS Divider ===== */
 .problem-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 60px;
+  flex: 0 0 80px;
 }
 
-.divider-text {
-  background: var(--text-dark);
-  color: var(--bg-white);
-  width: 50px;
-  height: 50px;
+.vs-bubble {
+  width: 72px;
+  height: 72px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  background: var(--clr-yellow);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-cartoon-yellow);
+  font-family: 'Fredoka', sans-serif;
   font-weight: 700;
-  font-family: 'Poppins', sans-serif;
-  z-index: 2;
-  box-shadow: var(--shadow-sm);
+  font-size: 0.9rem;
+  color: var(--clr-text);
+  gap: 0;
+  line-height: 1.1;
+  animation: bounce 2s ease-in-out infinite;
 }
 
+.vs-bubble span {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* ===== Solution Banner ===== */
 .solution-banner {
-  background: var(--primary-green);
-  color: var(--bg-white);
-  border-radius: var(--border-radius-md);
-  padding: 40px;
+  border-radius: var(--radius-xl);
+  padding: 48px 40px;
   text-align: center;
-  box-shadow: var(--shadow-md);
+  background: var(--clr-green);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-cartoon-green);
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-emoji {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
+  animation: bounce 2.5s ease-in-out infinite;
 }
 
 .solution-banner h3 {
-  color: var(--bg-white);
+  font-family: 'Fredoka', sans-serif;
   font-size: 1.8rem;
   margin-bottom: 12px;
+  color: var(--clr-text);
 }
 
 .solution-banner p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  max-width: 700px;
+  font-size: 1.05rem;
+  color: var(--clr-text);
+  max-width: 600px;
   margin: 0 auto;
+  line-height: 1.65;
+  opacity: 0.85;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 992px) {
   .problem-grid {
     flex-direction: column;
+    align-items: center;
   }
+
+  .problem-card {
+    max-width: 100%;
+  }
+
   .problem-divider {
-    padding: 20px 0;
+    padding: 8px 0;
   }
-  .divider-text {
-    width: 40px;
-    height: 40px;
-    font-size: 0.9rem;
+
+  .vs-bubble {
+    width: 60px;
+    height: 60px;
+    font-size: 0.8rem;
   }
 }
